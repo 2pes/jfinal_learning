@@ -9,7 +9,7 @@ import com.jfinal.core.Controller;
 public class IndexController extends Controller {
     public void index() {
 
-        setAttr("msg","msg");
+        setAttr("msg","3.0index");
         renderTemplate("index.html");
     }
 
