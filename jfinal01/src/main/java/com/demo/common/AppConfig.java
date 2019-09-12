@@ -1,6 +1,7 @@
 package com.demo.common;
 
-import com.demo.controller.IndexController;
+import com.demo.route.AdminRoute;
+import com.demo.route.FrontRoute;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.template.Engine;
@@ -15,9 +16,8 @@ public class AppConfig extends JFinalConfig {
     }
 
     public void configRoute(Routes routes) {
-        routes.add("/", IndexController.class);
-        routes.add("/blog", IndexController.class);
-        routes.add("/abc", IndexController.class,"/blog");
+        routes.add(new AdminRoute());//后端路由
+        routes.add(new FrontRoute());//前端路由
     }
 
     public void configEngine(Engine engine) {
