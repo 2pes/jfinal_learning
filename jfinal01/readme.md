@@ -39,6 +39,36 @@ add("/blog", BlogController.class,"/blog");
 ```
 
 ### 路由分包
+1. JFinal路由还可以进行拆分配置，这对大规模团队开发特别有用，以下是代码示例 ：    
+    ```java
+    public void configRoute(Routes me) {
+        me.add(new FrontRoutes()); // 前端路由
+        me.add(new AdminRoutes()); // 后端路由
+    }
+    ......
+    public class FrontRoutes extends Routes {
+        public void config() {
+        setBaseViewPath("/view/front");
+        add("/", IndexController.class);
+        add("/blog", BlogController.class);
+        }
+    }
+    
+    ......
+    public class AdminRoutes extends Routes {
+        public void config() {
+        setBaseViewPath("/view/admin");
+        addInterceptor(new AdminInterceptor());
+        add("/admin", AdminController.class);
+        add("/admin/user", UserController.class);
+        }
+    }
+    ```
+
+2. 路由级别的拦截器     
+    - 实现`Interceptor`
+    - 执行`invocation.invoke();`
+
 
 ## 第十四讲.AOP简述
 ### Interceptor的分类

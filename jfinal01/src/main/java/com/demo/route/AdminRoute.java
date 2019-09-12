@@ -1,6 +1,7 @@
 package com.demo.route;
 
 import com.demo.controller.IndexController;
+import com.demo.interceptor.AdminRouteInterceptor;
 import com.jfinal.config.Routes;
 
 /**
@@ -10,7 +11,7 @@ import com.jfinal.config.Routes;
 public class AdminRoute extends Routes {
     public void config() {
         setBaseViewPath("/WEB-INF");
-        //addInterceptor(new AdminInterceptor());
+        addInterceptor(new AdminRouteInterceptor());
         add("/admin", IndexController.class);
 
     }
