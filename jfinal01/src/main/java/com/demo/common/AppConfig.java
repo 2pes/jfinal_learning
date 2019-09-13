@@ -1,11 +1,13 @@
 package com.demo.common;
 
+import com.demo.interceptor.GlobalInterceptor;
 import com.demo.model.Blog;
 import com.demo.route.AdminRoute;
 import com.demo.route.FrontRoute;
 import com.jfinal.config.*;
 import com.jfinal.core.JFinal;
 import com.jfinal.ext.handler.ContextPathHandler;
+import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
@@ -23,6 +25,10 @@ public class AppConfig extends JFinalConfig {
 	}
 
 	public void configRoute(Routes routes) {
+		// routes.add("/", IndexController.class);
+		// routes.add("/", IndexController.class, "/abc");
+		// routes.add("/blog", BlogController.class, "/blog");
+		// routes.add("/user", UserController.class, "/user");
 		routes.add(new AdminRoute());// 后端路由
 		routes.add(new FrontRoute());// 前端路由
 	}
@@ -39,15 +45,20 @@ public class AppConfig extends JFinalConfig {
 
 		// 配置ActiveRecord插件
 		ActiveRecordPlugin arp = new ActiveRecordPlugin(druidPlugin);
+		arp.setBaseSqlTemplatePath(PathKit.getWebRootPath() + "/WEB-INF");
+		arp.addSqlTemplate("sql/demo.sql");
 		arp.addMapping("blog", Blog.class);
 		plugins.add(arp);
 	}
 
 	public void configInterceptor(Interceptors interceptors) {
-
+		interceptors.add(new GlobalInterceptor());
+		// interceptors.addGlobalServiceInterceptor(new
+		// InjectInterceptor());//给所有的Service添加拦截器
 	}
 
 	public void configHandler(Handlers handlers) {
+		// 创建上下文
 		handlers.add(new ContextPathHandler("ctx"));
 	}
 
@@ -66,5 +77,11 @@ public class AppConfig extends JFinalConfig {
 	@Override
 	public void afterJFinalStart() {
 		System.out.println("afterJFinalStart............可以用来启动任务，相当于回调");
+	}
+
+	@Override
+	public void beforeJFinalStop() {
+		super.beforeJFinalStop();
+		System.out.println("beforeJFinalStop...");
 	}
 }

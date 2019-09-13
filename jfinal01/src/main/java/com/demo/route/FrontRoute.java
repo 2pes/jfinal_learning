@@ -1,6 +1,7 @@
 package com.demo.route;
 
 import com.demo.controller.BlogController;
+import com.demo.controller.IndexController;
 import com.jfinal.config.Routes;
 
 /**
