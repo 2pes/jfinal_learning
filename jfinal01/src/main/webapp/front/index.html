@@ -7,7 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-front，#(msg)
+<h1>这是front下面的界面，我们用了setBaseViewPath("/front")</h1>
+#(msg)
+<input type="checkbox" name="test" value="1">1
+<input type="checkbox" name="test" value="2">2
+<input type="checkbox" name="test" value="3">3
+<input type="checkbox" name="test" value="4">4
 
+<div>
+	<form action="/blog/save" method="post">
+	<input name="blog.title" type="text">
+	<input name="blog.content" type="text">
+	<input value="提交" type="submit">
+	</form>
+</div>
 </body>
 </html>

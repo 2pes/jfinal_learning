@@ -69,6 +69,11 @@ add("/blog", BlogController.class,"/blog");
     - 实现`Interceptor`
     - 执行`invocation.invoke();`
 
+3. 路径匹配       
+finalView = baseViewPath + viewPView + view
+注意 ：当 view 以 “/” 字符打头时表示绝对路径，baseViewPath 与 viewPath 将被忽略 。     
+4. 路由表规则        
+JFinalJFinal路由规则如下表       
 
 ## 第十四讲.AOP简述
 ### Interceptor的分类

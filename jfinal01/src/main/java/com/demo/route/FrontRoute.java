@@ -1,6 +1,6 @@
 package com.demo.route;
 
-import com.demo.controller.IndexController;
+import com.demo.controller.BlogController;
 import com.jfinal.config.Routes;
 
 /**
@@ -9,8 +9,9 @@ import com.jfinal.config.Routes;
  */
 public class FrontRoute extends Routes {
     public void config() {
-        setBaseViewPath("/front");
-        add("/", IndexController.class);
+        setBaseViewPath("/blog");
+        //add("/", IndexController.class);
+        add("/", BlogController.class);
 
     }
 }
