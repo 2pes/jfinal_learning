@@ -1,0 +1,7 @@
+#主要配置
+jdbcUrl=jdbc:mysql://localhost:3306/jfinal?characterEncoding=utf8&useSSL=false&zeroDateTimeBehavior=convertToNull
+user=jfinal
+password=jfinal
+devMode=true
+engineDevMode=true
+secretkey=dd1cd38c5fcf3d8942202613de724beb
