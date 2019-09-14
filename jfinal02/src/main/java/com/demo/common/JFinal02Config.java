@@ -6,7 +6,6 @@ import com.jfinal.json.MixedJsonFactory;
 import com.jfinal.kit.PathKit;
 import com.jfinal.kit.Prop;
 import com.jfinal.kit.PropKit;
-import com.jfinal.server.undertow.UndertowServer;
 import com.jfinal.template.Engine;
 
 /**
@@ -44,9 +43,11 @@ public class JFinal02Config extends JFinalConfig {
     }
 
     public void configInterceptor(Interceptors me) {
+
     }
 
     public void configHandler(Handlers me) {
+
     }
 
 }
